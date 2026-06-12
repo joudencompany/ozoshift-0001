@@ -54,7 +54,30 @@ const HelpModal = ({ isOpen, onClose, content }) => {
         >
           ×
         </button>
-        <div style={{ padding: '2rem', paddingTop: '0' }}>
+        <div style={{ padding: '1rem 2rem 0.5rem', borderBottom: '1px solid #eee' }}>
+          <button
+            onClick={() => window.open('/manual.pdf', '_blank')}
+            style={{
+              backgroundColor: '#1976D2',
+              color: 'white',
+              border: 'none',
+              borderRadius: '8px',
+              padding: '10px 20px',
+              cursor: 'pointer',
+              fontSize: '15px',
+              fontWeight: 'bold',
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              boxShadow: '0 2px 6px rgba(25,118,210,0.3)'
+            }}
+          >
+            📖 説明書を見る
+          </button>
+        </div>
+        <div style={{ padding: '2rem', paddingTop: '1.5rem' }}>
           {content}
         </div>
       </div>
@@ -175,6 +198,7 @@ const getHelpContent = (isAuthenticated) => {
           <li>保存すると変更は即座に反映されます</li>
           <li>シフトが既に作成された日付は編集できません</li>
           <li>時間を空欄にすると休みとして登録されます</li>
+          <li>シフトデータは2年以上経過すると自動的に削除されます</li>
         </ul>
       </div>
 
