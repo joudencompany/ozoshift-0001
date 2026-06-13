@@ -854,7 +854,7 @@ const rowBg = isBoshu ? '#fff0f0' : isOwnShift ? '#e8f5e9' : (index % 2 === 0 ? 
         color: '#666',
         fontStyle: 'italic'
       }}>
-        {shift.remarks || '-'}
+        {[shift.remarks, shift.manager_memo].filter(Boolean).join(' / ') || '-'}
       </td>
       <td style={{
         padding: '0.75rem 0.5rem',
@@ -1029,7 +1029,7 @@ const rowBg = isBoshu ? '#fff0f0' : isOwnShift ? '#e8f5e9' : (index % 2 === 0 ? 
         overflow: 'hidden',
         textOverflow: 'ellipsis'
       }}>
-        {shift.remarks || '-'}
+        {[shift.remarks, shift.manager_memo].filter(Boolean).join(' / ') || '-'}
       </td>
       {timeSlots.map((timeSlot) => {
         const isWorking = isWorkingAtTime(shift, timeSlot);
