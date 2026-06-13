@@ -296,6 +296,7 @@ const [showDeleted, setShowDeleted] = useState(false);
         .from('users')
         .update({ 
           user_password: hashedPassword,
+          plain_password: newPasswordForEdit,
         })
         .eq('id', user.id);
 
