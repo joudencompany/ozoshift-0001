@@ -292,16 +292,18 @@ const [showDeleted, setShowDeleted] = useState(false);
     try {
       const hashedPassword = await hashPassword(newPasswordForEdit);
       
-      const { error } = await supabase
+      const { error, data: updateData } = await supabase
         .from('users')
         .update({ 
           user_password: hashedPassword,
           plain_password: newPasswordForEdit,
         })
-        .eq('id', user.id);
+        .eq('manager_number', user.manager_number)
+        .select();
 
+      console.log('update result:', error, updateData);
       if (error) {
-        alert('パスワード変更に失敗しました');
+        alert('パスワード変更に失敗しました: ' + error.message);
       } else {
         alert('パスワードを変更しました');
         setEditingUser(null);
