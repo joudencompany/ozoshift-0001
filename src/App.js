@@ -1560,7 +1560,7 @@ const handleSubmit = async () => {
           <div style={{ fontSize: '3rem', marginBottom: '0.3rem' }}>📲</div>
           <h3 style={{ margin: '0 0 0.4rem', fontSize: '1.2rem', color: '#1565C0' }}>ホーム画面に追加しよう</h3>
           <p style={{ margin: '0 0 1rem', fontSize: '13px', color: '#555', lineHeight: 1.6 }}>
-            プッシュ通知が届くようになります。<br />アイコンからいつでも起動できます。
+            追加すると、プッシュ通知が届くようになります。<br />アイコンからいつでも起動できます。
           </p>
 
           {/* Android Chrome */}
@@ -1754,7 +1754,7 @@ const handleSubmit = async () => {
 
           <button type="button" onClick={dismiss}
             style={{ width: '100%', padding: '11px', backgroundColor: '#eee', color: '#555', border: 'none', borderRadius: '12px', fontSize: '14px', marginTop: '4px' }}>
-            後で
+            わかった
           </button>
         </div>
       </div>
