@@ -2443,7 +2443,7 @@ if (role === 'clockin') {
           <button onClick={async () => {
             setTestMsg('シフトリマインダー関数を実行中...');
             try {
-              const res = await fetch('https://csyjgivzvkypwhococfv.supabase.co/functions/v1/daily-notifications');
+              const res = await fetch('https://eqjqotinlcpepcitpcps.supabase.co/functions/v1/daily-notifications');
               const data = await res.json();
               const sentCount = (data.results || []).filter(r => r.status === 'sent').length;
               const failCount = (data.results || []).filter(r => r.status === 'failed').length;
