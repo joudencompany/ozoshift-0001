@@ -109,12 +109,22 @@ Supabase でこの店舗用のプロジェクトを作成してください。
 5. 「Create new project」をクリック
 6. Settings → API を開く
 
-完了したら以下の2つを教えてください：
+完了したら以下の3つを教えてください：
 ・Project URL（例：https://xxxxxxxxxx.supabase.co）
 ・anon / public キー（長い文字列）
+・Supabase Access Token（以下の手順で取得）
+
+【Supabase Access Token の取得方法】
+1. supabase.com にログイン
+2. 右上のアイコン → 「Account」
+3. 左メニュー「Access Tokens」
+4. 「Generate new token」→ 名前を入力（例：shift-app）→「Generate token」
+5. 表示されたトークン（sbp_xxx...）をコピーしてメモ
+
+⚠️ このトークンは一度しか表示されません。必ずメモしてください！
 ```
 
-ユーザーから URL と anon key を受け取ったら、以下の**2ファイル**を自動で書き換える：
+ユーザーから URL・anon key・Access Token を受け取ったら、以下を自動実行する：
 
 **① `src/supabaseClient.js` の書き換え：**
 ```js
@@ -131,7 +141,17 @@ const SUPABASE_ANON_KEY = '受け取ったanon key';
 
 ※ `VAPID_PUBLIC_KEY` は全店舗共通のため変更しない。
 
-書き換え後「完了しました」と報告して STEP 3 へ。
+**③ Edge Function のデプロイ（自動実行）：**
+
+Project URL から ref を抽出する（例：`https://xxxxxxxxxx.supabase.co` → ref = `xxxxxxxxxx`）
+
+以下のコマンドを実行する（フォルダは `C:\Users\kouki\my-app`）：
+```bash
+cd C:\Users\kouki\my-app
+SUPABASE_ACCESS_TOKEN={受け取ったAccess Token} npx supabase functions deploy daily-notifications --project-ref {ref} --no-verify-jwt
+```
+
+完了後「完了しました」と報告して STEP 3 へ。
 
 ---
 
